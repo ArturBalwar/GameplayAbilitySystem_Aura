@@ -8,6 +8,28 @@
 
 class UAttributeSet;
 class UAbilitySystemComponent;
+
+USTRUCT(BlueprintType)
+struct FWidgetControllerParams
+{
+	GENERATED_BODY()
+	FWidgetControllerParams(){}
+	FWidgetControllerParams(APlayerController* PC, APlayerState* PS, UAbilitySystemComponent* ASC, UAttributeSet* AS)
+	: PlayerController(PC), PlayerState(PS),AbilitySystemComponent(ASC), AttributeSet(AS) {}
+
+	UPROPERTY(editanywhere, BlueprintReadWrite)
+	TObjectPtr<APlayerController> PlayerController = nullptr;
+	
+	UPROPERTY(editanywhere, BlueprintReadWrite)
+	TObjectPtr<APlayerState> PlayerState = nullptr;
+	
+	UPROPERTY(editanywhere, BlueprintReadWrite)
+	TObjectPtr<UAbilitySystemComponent> AbilitySystemComponent = nullptr;
+	
+	UPROPERTY(editanywhere, BlueprintReadWrite)
+	TObjectPtr<UAttributeSet> AttributeSet = nullptr;
+
+};
 /**
  * 
  */
@@ -27,6 +49,10 @@ protected:
 	
 	UPROPERTY(BlueprintReadOnly, Category = "WidgetController")
 	TObjectPtr<UAttributeSet> AttributeSet;
+
+public:
+	UFUNCTION(blueprintCallable, Category = "WidgetController")
+	void SetWidgetControllerParams(const FWidgetControllerParams&  WidgetControllerParams);
 
 	
 };
