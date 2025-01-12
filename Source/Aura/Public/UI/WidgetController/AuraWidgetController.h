@@ -37,6 +37,12 @@ UCLASS()
 class AURA_API UAuraWidgetController : public UObject
 {
 	GENERATED_BODY()
+public:
+	UFUNCTION(blueprintCallable, Category = "WidgetController")
+	void SetWidgetControllerParams(const FWidgetControllerParams&  WidgetControllerParams);
+	virtual void BroadcastInitialValues();
+
+
 protected:
 	UPROPERTY(BlueprintReadOnly, Category = "WidgetController")
 	TObjectPtr<APlayerController> PlayerController;
@@ -50,9 +56,6 @@ protected:
 	UPROPERTY(BlueprintReadOnly, Category = "WidgetController")
 	TObjectPtr<UAttributeSet> AttributeSet;
 
-public:
-	UFUNCTION(blueprintCallable, Category = "WidgetController")
-	void SetWidgetControllerParams(const FWidgetControllerParams&  WidgetControllerParams);
 
 	
 };
