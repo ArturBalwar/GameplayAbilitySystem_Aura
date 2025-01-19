@@ -10,6 +10,8 @@ UAuraAttributeSet::UAuraAttributeSet()
 	InitMaxHealth(100.f);
 	InitMana(25.f);
 	InitMaxMana(50.f);
+	//InitDamage(50.f);
+	
 }
 
 void UAuraAttributeSet::GetLifetimeReplicatedProps(TArray<FLifetimeProperty>& OutLifetimeProps) const
@@ -41,3 +43,4 @@ void UAuraAttributeSet::OnRep_MaxMana(const FGameplayAttributeData& OldMaxMana) 
 {
 	GAMEPLAYATTRIBUTE_REPNOTIFY(UAuraAttributeSet, MaxMana, OldMaxMana);
 }
+
